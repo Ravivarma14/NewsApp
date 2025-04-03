@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="15dp"
+    android:backgroundTint="@color/white">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/newsImageViewContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="15dp">
+
+    <ImageView
+        android:contentDescription="newsImage"
+        android:id="@+id/newsImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        app:layout_constraintStart_toEndOf="@id/newsImageViewContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginStart="5dp"
+        android:paddingTop="8dp" />
+
+    <TextView
+        app:layout_constraintStart_toEndOf="@id/newsImageViewContainer"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        android:id="@+id/publishedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginStart="5dp"
+        android:paddingTop="4dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -17,12 +17,16 @@ class NewsAdapter(private val onItemClicked: (Article) -> Unit) : RecyclerView.A
 
     inner class NewsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
-        private val descriptionTextView: TextView = itemView.findViewById(R.id.publishedTextView)
+        private val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
+        private val publishedTextView: TextView = itemView.findViewById(R.id.publishedTextView)
         private val newsImageView: ImageView = itemView.findViewById(R.id.newsImageView)
+        private val authorView: TextView = itemView.findViewById(R.id.authorTextView)
 
         fun bind(article: Article) {
             titleTextView.text = article.title
-            descriptionTextView.text = article.publishedAt ?: ""
+            publishedTextView.text = article.publishedAt ?: ""
+            descriptionTextView.text = article.description
+            if(article.author!=null) authorView.text= article.author
             Glide.with(itemView.context)
                 .load(article.urlToImage)
                 .placeholder(R.drawable.placeholder)

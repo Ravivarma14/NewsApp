@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.Adapter.NewsAdapter
 import com.example.newsapp.Repository.NewsRepository
+import com.example.newsapp.util.Constants.API_KEY
 import com.example.newsapp.viewModels.NewsViewModel
 import com.example.newsapp.viewModels.ViewModelFactory
 
@@ -22,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: NewsViewModel
     private lateinit var newsAdapter: NewsAdapter
-    private val APIKEY="c9d18c261a3d45b3af9e948cbcf9ba36"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +68,6 @@ class MainActivity : AppCompatActivity() {
             articles?.let { newsAdapter.updateArticles(it) }
         }
 
-        viewModel.fetchTopHeadlines("us", "c9d18c261a3d45b3af9e948cbcf9ba36")
+        viewModel.fetchTopHeadlines("us", API_KEY)
     }
 }

@@ -16,7 +16,7 @@ class NewsViewModel(private val repository: NewsRepository): ViewModel() {
     fun fetchTopHeadlines(country:String, apiKey:String){
         viewModelScope.launch {
             val fetchedArticles=repository.getTopHeadlines(country,apiKey)
-            Log.d("TAG", "fetchTopHeadlines: articles: "+ fetchedArticles.toString())
+//            Log.d("TAG", "fetchTopHeadlines: articles: "+ fetchedArticles.toString())
             _articles.postValue(fetchedArticles)
         }
     }

@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.example.newsapp.Repository.NewsRepository
+import com.google.android.material.card.MaterialCardView
 
 class NewsDetailsActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -27,9 +29,13 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     }
 
+    var isLike:Boolean= false
+    var repository: NewsRepository? = null
     override fun onResume() {
         super.onResume()
 
+
+        repository = NewsRepository()
 
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
@@ -55,5 +61,28 @@ class NewsDetailsActivity : AppCompatActivity() {
         findViewById<Button>(R.id.readMoreButton).setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
+
+        findViewById<MaterialCardView>(R.id.likesContainer).setOnClickListener{
+            isLike=!isLike
+            if(isLike) findViewById<ImageView>(R.id.iconIV).setImageDrawable(getDrawable(R.drawable.like_fill))
+            else findViewById<ImageView>(R.id.iconIV).setImageDrawable(getDrawable(R.drawable.like_icon))
+        }
+
+        findViewById<MaterialCardView>(R.id.commentsContainer).setOnClickListener{
+        }
+    }
+
+    suspend fun getLikesCount(url:String): Int? {
+        var noScheme = url.replace(Regex("^https?://"), "")
+        noScheme= noScheme.replace("/", "-")
+
+        return repository?.getLikesFor(url)
+    }
+
+    suspend fun getCommentsCount(url:String): Int? {
+        var noScheme = url.replace(Regex("^https?://"), "")
+        noScheme= noScheme.replace("/", "-")
+
+        return repository?.getCommentsFor(url)
     }
 }

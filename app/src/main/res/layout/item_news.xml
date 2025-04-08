@@ -7,6 +7,7 @@
     android:layout_margin="5dp"
     app:cardElevation="10dp"
     app:cardCornerRadius="15dp"
+    app:contentPadding="5dp"
     android:backgroundTint="@color/white">
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,16 +41,38 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:ellipsize="end"
-        android:singleLine="true"
+        android:lines="1"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:layout_marginStart="5dp"
-        android:paddingTop="8dp" />
+        android:layout_marginStart="5dp"/>
 
     <TextView
         app:layout_constraintStart_toEndOf="@id/newsImageViewContainer"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:lines="2"
+        android:ellipsize="end"
+        android:layout_marginStart="5dp"
+        android:paddingTop="4dp" />
+
+    <TextView
+        app:layout_constraintStart_toEndOf="@id/newsImageViewContainer"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+        android:id="@+id/authorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginStart="5dp"
+        android:paddingTop="4dp" />
+
+    <TextView
+        app:layout_constraintStart_toEndOf="@id/newsImageViewContainer"
+        app:layout_constraintTop_toBottomOf="@id/authorTextView"
         android:id="@+id/publishedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
